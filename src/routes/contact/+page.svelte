@@ -6,14 +6,14 @@
   <!-- Header Section -->
   <header class="w-full flex justify-between items-center p-6 bg-gray-900 shadow-lg fixed top-0 left-0 z-10">
     <h1 class="text-3xl font-extrabold text-white hover:text-cyan-400 transition duration-300">
-      <a href="/home" class="flex items-center">
+      <a href="/home" aria-label="Home" class="flex items-center">
         <i class="fas fa-home mr-2"></i>
       </a>
     </h1>
-    <nav class="space-x-6">
-      <a href="/about" class="text-white hover:text-cyan-400 transition duration-300">About</a>
-      <a href="/projects" class="text-white hover:text-cyan-400 transition duration-300">Projects</a>
-      <a href="/contact" class="text-white hover:text-cyan-400 transition duration-300">Contact</a>
+    <nav class="space-x-6" aria-label="Main Navigation">
+      <a href="/about" aria-label="About Me" class="text-white hover:text-cyan-400 transition duration-300">About</a>
+      <a href="/projects" aria-label="Projects" class="text-white hover:text-cyan-400 transition duration-300">Projects</a>
+      <a href="/contact" aria-label="Contact" class="text-white hover:text-cyan-400 transition duration-300">Contact</a>
     </nav>
   </header>
 
@@ -29,10 +29,11 @@
         href="https://github.com/Jus1ine" 
         target="_blank" 
         class="icon-link text-gray-400 transition-colors duration-200"
+        aria-label="Visit my GitHub profile"
       >
         <i class="fab fa-github fa-3x mb-2"></i>
         <span class="icon-image">
-          <img src="/github.png" alt="GitHub Image" class="hover-image" />
+          <img src="/github.png" alt="GitHub logo linking to my GitHub profile" class="hover-image" />
         </span>
       </a>
 
@@ -41,10 +42,11 @@
         href="https://www.facebook.com/kevin.go.1614" 
         target="_blank" 
         class="icon-link text-gray-400 transition-colors duration-200"
+        aria-label="Visit my Facebook profile"
       >
         <i class="fab fa-facebook fa-3x mb-2"></i>
         <span class="icon-image">
-          <img src="/facebook.png" alt="Facebook Image" class="hover-image" />
+          <img src="/facebook.png" alt="Facebook logo linking to my Facebook profile" class="hover-image" />
         </span>
       </a>
 
@@ -53,10 +55,11 @@
         href="https://discord.com/channels/@me" 
         target="_blank" 
         class="icon-link text-gray-400 transition-colors duration-200"
+        aria-label="Visit my Discord profile"
       >
         <i class="fab fa-discord fa-3x mb-2"></i>
         <span class="icon-image">
-          <img src="/discord.png" alt="Discord Image" class="hover-image" />
+          <img src="/discord.png" alt="Discord logo linking to my Discord profile" class="hover-image" />
         </span>
       </a>
 
@@ -64,10 +67,11 @@
       <a 
         href="mailto:202211378@gordoncollege.edu.ph?subject=Inquiry&body=Hi, I would like to discuss..." 
         class="icon-link text-gray-400 transition-colors duration-200"
+        aria-label="Send me an email"
       >
         <i class="fas fa-envelope fa-3x mb-2"></i>
         <span class="icon-image">
-          <img src="/gmail.png" alt="Email Image" class="hover-image" />
+          <img src="/gmail.png" alt="Email logo linking to my email" class="hover-image" />
         </span>
       </a>
     </div>
@@ -102,7 +106,7 @@
   }
 
   .icon-link:hover {
-    color: #00bcd4;
+    color: #00bcd4; /* Change color on hover */
   }
 
   .icon-image {
@@ -126,17 +130,17 @@
     width: auto;
     height: auto;
     border-radius: 0.5rem;
-    border: 4px solid #22d3ee;
+    border: 4px solid #22d3ee; /* Border color */
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   }
 
   /* Responsive styles */
   @media (max-width: 768px) {
     h1 {
-      font-size: 3rem;
+      font-size: 3rem; /* Adjust font size for smaller screens */
     }
     p {
-      font-size: 1.2rem;
+      font-size: 1.2rem; /* Adjust font size for smaller screens */
     }
   }
 </style>
