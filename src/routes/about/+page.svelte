@@ -2,49 +2,34 @@
     import '@fortawesome/fontawesome-free/css/all.css';
     import { onMount } from 'svelte';
 
-    let nameText = '';
-    let titleText = '';
-    let helloText = '';
-    const fullName = "Justine Marzan";
-    const title = "A 3rd Year College Student";
-    const introText = "I’m a frontend developer student at Gordon College. I know how to build intuitive and responsive user interfaces using HTML, CSS, and JavaScript. I enjoy turning designs into working web apps and am always looking to learn new frameworks and work on real-world projects.";
+    const introText = "Hi there! I’m Justine Karl Manuel Marzan, and I’m currently a third-year student at Gordon College, pursuing a degree in BSIT. My main focus is on web development, where I enjoy creating user-friendly and engaging websites. While I specialize in frontend development, I also have experience in networking and other tech-related areas. I started this journey in my first semester at Gordon College, and I've been passionate about bringing ideas to life online ever since!";
 
-    let nameIndex = 0;
-    let titleIndex = 0;
-    let helloIndex = 0; // Index for "Hello, I am"
-    const typeSpeed = 50;
+    // Typing animation for "About Me" title
+    let aboutText = '';
+    let meText = '';
+    const aboutFullText = 'About';
+    const meFullText = 'Me';
+    const typingSpeed = 100;
 
     onMount(() => {
-        typeWriterHello(); // Start typing "Hello, I am"
+        typeAboutMe();
     });
 
-    function typeWriterHello() {
-        const helloTextFull = "Hello, I am";
-        if (helloIndex < helloTextFull.length) {
-            helloText += helloTextFull.charAt(helloIndex);
-            helloIndex++;
-            setTimeout(typeWriterHello, typeSpeed);
-        } else {
-            setTimeout(typeWriterName, 500); // After typing helloText, type name
-        }
-    }
+    function typeAboutMe() {
+        let i = 0;
+        let j = 0;
 
-    function typeWriterName() {
-        if (nameIndex < fullName.length) {
-            nameText += fullName.charAt(nameIndex);
-            nameIndex++;
-            setTimeout(typeWriterName, typeSpeed);
-        } else {
-            setTimeout(typeWriterTitle, 500); // After typing name, type title
-        }
-    }
-
-    function typeWriterTitle() {
-        if (titleIndex < title.length) {
-            titleText += title.charAt(titleIndex);
-            titleIndex++;
-            setTimeout(typeWriterTitle, typeSpeed);
-        }
+        const interval = setInterval(() => {
+            if (i < aboutFullText.length) {
+                aboutText += aboutFullText[i];
+                i++;
+            } else if (j < meFullText.length) {
+                meText += meFullText[j];
+                j++;
+            } else {
+                clearInterval(interval);
+            }
+        }, typingSpeed);
     }
 </script>
 
@@ -57,22 +42,23 @@
             </a>
         </h1>
         <nav class="space-x-6">
-            <a href="/about" class="text-white text-lg hover:text-cyan-400 transition duration-300">About</a> <!-- Increased font size -->
-            <a href="/projects" class="text-white text-lg hover:text-cyan-400 transition duration-300">Projects</a> <!-- Increased font size -->
-            <a href="/contact" class="text-white text-lg hover:text-cyan-400 transition duration-300">Contact</a> <!-- Increased font size -->
-        </nav>        
+            <a href="/about" class="text-white text-lg hover:text-cyan-400 transition duration-300">About</a>
+            <a href="/projects" class="text-white text-lg hover:text-cyan-400 transition duration-300">Projects</a>
+            <a href="/contact" class="text-white text-lg hover:text-cyan-400 transition duration-300">Contact</a>
+        </nav>
     </header>
 
-    <!-- Welcome Section -->
-    <div class="flex flex-col md:flex-row items-center w-full max-w-7xl mb-16 mt-24 pt-20">
-        <!-- Name and Title with typing effect -->
+    <!-- About Me Section with Reversed Layout -->
+    <div class="flex flex-col md:flex-row-reverse items-center w-full max-w-7xl mb-16 mt-24 pt-20">
+        <!-- About Me content -->
         <div class="flex flex-col items-start text-white mb-10 md:mb-0 md:w-1/2">
-            <p class="text-2xl text-white mb-2">{helloText}</p> <!-- Typing effect for Hello, I am -->
-            <h1 class="text-9xl font-extrabold mb-4 text-cyan-400 drop-shadow-lg">{nameText}</h1>
-            <p class="text-3xl md:text-4xl text-white font-semibold mb-6">{titleText}</p>
+            <h2 class="text-[10rem] font-extrabold leading-tight mb-4 drop-shadow-lg">
+                <span class="text-cyan-400">{aboutText}</span><br>
+                <span class="text-white">{meText}</span>
+            </h2>
         </div>
-        <!-- Larger Image on the right without shadow -->
-        <img src="hellodyan.png" alt="Justine's portrait" class="w-full h-auto md:w-[650px] lg:w-[700px] lg:ml-20 rounded-lg transition-transform duration-300 transform hover:scale-105">
+        <!-- Image on the left -->
+        <img src="/HI.jpg" alt="Justine's portrait" class="w-full h-auto md:w-[500px] lg:w-[600px] lg:mr-20 rounded-lg transition-transform duration-300 transform hover:scale-105">
     </div>
 
     <!-- Introduction and Skills Section -->
@@ -80,9 +66,9 @@
         <p class="text-xl md:text-2xl mb-10 leading-relaxed text-gray-300 drop-shadow-md">{introText}</p>
         
         <!-- Skills Section Title -->
-        <h2 class="text-3xl md:text-4xl font-semibold text-white mb-6 text-center">Skills</h2> <!-- Centered Title -->
+        <h2 class="text-3xl md:text-4xl font-semibold text-white mb-6 text-center">Skills</h2>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 w-full text-center"> <!-- Added text-center class -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 w-full text-center">
             {#each [
                 {
                     title: 'Front-End Developer',
@@ -162,7 +148,7 @@
     /* Enhanced responsiveness */
     @media (max-width: 768px) {
         h1 {
-            font-size: 6rem;
+            font-size: 5rem;
         }
         p {
             font-size: 1.5rem;
@@ -172,6 +158,3 @@
         }
     }
 </style>
-
-<!-- Include FontAwesome in your index.html -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha384-DyZ5uwHbH7+zWjx0GrF9w2A9zZ2d/74M0pEd+EqpAn0U4g9kWECu7jwyQ0IH4Y" crossorigin="anonymous">
