@@ -78,7 +78,7 @@
 
     <!-- Additional Note -->
     <div class="w-full max-w-3xl mt-10 mb-6 text-center">
-        <p class="text-gray-300 text-lg">This is not all my projects. Some of my projects have been deleted, and I don’t have images for them.</p>
+        <p class="text-gray-300 text-lg">What you see here is just some of my projects. I have more projects, but they have all been deleted, and I don't have any images for them.</p>
     </div>
     
     <!-- Footer -->
