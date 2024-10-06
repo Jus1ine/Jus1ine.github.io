@@ -24,7 +24,7 @@
             description: 'This was my first project, a simple text-to-speech application. It was a beginner’s project that helped me understand basic web development.',
             media: {
                 type: 'video',
-                src: '/txt_to_speak.mp4'
+                src: '/txt to speak.mp4'
             }
         },
         {
