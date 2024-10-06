@@ -8,7 +8,7 @@ const config = {
     kit: {
         adapter: adapter({ pages: "build", assets: "build", fallback: undefined, precompress: false, strict: true }),
         prerender: {
-            handleHttpError: 'warn' // You can also use 'continue' or 'ignore' based on your needs
+            handleHttpError: 'warn', // Options: 'warn', 'continue', 'ignore'
         }
     },
 };
