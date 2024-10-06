@@ -62,10 +62,12 @@
                 {#if project.media.type === 'image'}
                     <img src={project.media.src} alt={project.title} class="w-full h-auto rounded-lg shadow-lg mb-6 transition-transform duration-300 transform hover:scale-105" />
                 {:else if project.media.type === 'video'}
-                    <video controls class="w-full h-auto rounded-lg shadow-lg mb-6 transition-transform duration-300 transform hover:scale-105">
-                        <source src={project.media.src} type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                <video controls class="w-full h-auto rounded-lg shadow-lg mb-6 transition-transform duration-300 transform hover:scale-105">
+                    <source src={project.media.src} type="video/mp4">
+                    <track kind="captions" src="captions.vtt" srclang="en" label="English">
+                    Your browser does not support the video tag.
+                </video>
+                
                 {/if}
                 <h3 class="text-3xl font-semibold text-cyan-300 mb-2 text-center mt-2 group-hover:text-cyan-400">{project.title}</h3>
                 <p class="text-center text-gray-300 mb-4">{project.description}</p>
