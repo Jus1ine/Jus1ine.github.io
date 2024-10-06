@@ -76,8 +76,8 @@
                 View My Projects
             </a>
         </div>
-        <!-- Profile Image on the right -->
-        <img src="hellodyan.png" alt="Justine's portrait" class="w-full h-auto md:w-[500px] lg:w-[550px] rounded-lg shadow-lg transition-transform duration-300 transform hover:scale-105">
+        <!-- Profile Image on the right with increased margin -->
+        <img src="hellodyan.png" alt="Justine's portrait" class="w-full h-auto md:w-[500px] lg:w-[550px] rounded-lg transition-transform duration-300 transform hover:scale-105 md:ml-32"> <!-- Removed shadow -->
     </div>
 </main>
 

@@ -29,13 +29,16 @@
             } else {
                 clearInterval(interval);
             }
+
+            // Debugging
+            console.log(aboutText, meText);
         }, typingSpeed);
     }
 </script>
 
 <main class="relative flex flex-col items-center justify-center min-h-screen p-12 bg-gradient-to-br from-gray-900 to-gray-800">
     <!-- Header Section -->
-    <header class="w-full flex justify-between items-center p-6 bg-gray-900 shadow-lg fixed top-0 left-0 z-10">
+    <header class="w-full flex justify-between items-center p-6 bg-gray-900 shadow-lg fixed top-0 left-0 z-20">
         <h1 class="text-3xl font-extrabold text-white hover:text-cyan-400 transition duration-300">
             <a href="/home" class="flex items-center">
                 <i class="fas fa-home mr-2"></i>
@@ -49,7 +52,7 @@
     </header>
 
     <!-- About Me Section with Reversed Layout -->
-    <div class="flex flex-col md:flex-row-reverse items-center w-full max-w-7xl mb-16 mt-24 pt-20">
+    <div class="flex flex-col md:flex-row-reverse items-center w-full max-w-7xl mb-16 mt-24 pt-20 relative z-10">
         <!-- About Me content -->
         <div class="flex flex-col items-start text-white mb-10 md:mb-0 md:w-1/2">
             <h2 class="text-[10rem] font-extrabold leading-tight mb-4 drop-shadow-lg">
@@ -58,17 +61,17 @@
             </h2>
         </div>
         <!-- Image on the left -->
-        <img src="/HI.jpg" alt="Justine's portrait" class="w-full h-auto md:w-[500px] lg:w-[600px] lg:mr-20 rounded-lg transition-transform duration-300 transform hover:scale-105">
+        <img src="/HI.jpg" alt="Justine's portrait" class="w-full h-auto md:w-[500px] lg:w-[600px] lg:mr-20 rounded-lg transition-transform duration-300 transform hover:scale-105 z-10">
     </div>
 
     <!-- Introduction and Skills Section -->
-    <div class="flex flex-col items-start w-full max-w-7xl text-white">
+    <div class="flex flex-col items-start w-full max-w-7xl text-white z-10">
         <p class="text-xl md:text-2xl mb-10 leading-relaxed text-gray-300 drop-shadow-md">{introText}</p>
         
         <!-- Skills Section Title -->
         <h2 class="text-3xl md:text-4xl font-semibold text-white mb-6 text-center">Skills</h2>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 w-full text-center">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 w-full text-center z-10">
             {#each [
                 {
                     title: 'Front-End Developer',
@@ -101,7 +104,7 @@
                     icon: 'fab fa-php'
                 }
             ] as skill}
-            <div class="relative group card p-6 bg-gradient-to-b from-gray-800 to-gray-900 rounded-lg shadow-lg hover:shadow-2xl transition-transform duration-300">
+            <div class="relative group card p-6 bg-gradient-to-b from-gray-800 to-gray-900 rounded-lg shadow-lg hover:shadow-2xl transition-transform duration-300 z-10">
                 <div class="absolute inset-0 bg-gradient-to-b from-transparent to-teal-400 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity duration-300"></div>
                 <div class="relative z-10 flex flex-col items-center">
                     <div class="p-3 bg-teal-600 rounded-full mb-4 transition-transform duration-300 transform group-hover:scale-110">
@@ -116,7 +119,7 @@
     </div>
     
     <!-- Footer -->
-    <footer class="w-full bg-gray-800 text-white py-4 text-center mt-10 shadow-inner">
+    <footer class="w-full bg-gray-800 text-white py-4 text-center mt-10 shadow-inner z-10">
         <p>© 2024 Justine Marzan. All rights reserved.</p>
     </footer>
 </main>
