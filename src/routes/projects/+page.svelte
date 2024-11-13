@@ -1,8 +1,39 @@
-<script>
+<script lang="ts">
     import '@fortawesome/fontawesome-free/css/all.css';
+    
+    // Add interfaces for type safety
+    interface Media {
+        type: 'image' | 'video';
+        src: string;
+    }
 
-    // Sample project data with images and videos
-    const projects = [
+    interface Project {
+        title: string;
+        description: string;
+        media: Media;
+    }
+    
+    // Add modal state
+    let showModal = false;
+    let modalContent = '';
+    let modalType: 'image' | 'video' | '' = '';
+
+    // Function to open modal with proper typing
+    const openModal = (media: Media) => {
+        modalContent = media.src;
+        modalType = media.type;
+        showModal = true;
+    };
+
+    // Function to close modal
+    const closeModal = () => {
+        showModal = false;
+        modalContent = '';
+        modalType = '';
+    };
+
+    // Update projects array with type
+    const projects: Project[] = [
         {
             title: 'Weather Application using Angular',
             description: 'Developed a website using REST API to fetch weather data. This was a solo project for an assessment.',
@@ -60,14 +91,24 @@
             {#each projects as project}
             <div class="relative group p-8 rounded-lg bg-gray-700 shadow-lg transition-all duration-300 transform hover:scale-105 hover:bg-gradient-to-tr hover:from-gray-700 hover:to-cyan-800">
                 {#if project.media.type === 'image'}
-                    <img src={project.media.src} alt={project.title} class="w-full h-auto rounded-lg shadow-lg mb-6 transition-transform duration-300 transform hover:scale-105" />
+                    <!-- svelte-ignore a11y-click-events-have-key-events -->
+                    <div role="button" tabindex="0" on:click={() => openModal(project.media)}>
+                        <img 
+                            src={project.media.src} 
+                            alt={project.title} 
+                            class="w-full h-auto rounded-lg shadow-lg mb-6 transition-transform duration-300 transform hover:scale-105 cursor-pointer" 
+                        />
+                    </div>
                 {:else if project.media.type === 'video'}
-                <video controls class="w-full h-auto rounded-lg shadow-lg mb-6 transition-transform duration-300 transform hover:scale-105">
-                    <source src={project.media.src} type="video/mp4">
-                    <track kind="captions" src="captions.vtt" srclang="en" label="English">
-                    Your browser does not support the video tag.
-                </video>
-                
+                    <!-- svelte-ignore a11y-click-events-have-key-events -->
+                    <div role="button" tabindex="0" on:click={() => openModal(project.media)}>
+                        <video 
+                            class="w-full h-auto rounded-lg shadow-lg mb-6 transition-transform duration-300 transform hover:scale-105 cursor-pointer"
+                        >
+                            <source src={project.media.src} type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
                 {/if}
                 <h3 class="text-3xl font-semibold text-cyan-300 mb-2 text-center mt-2 group-hover:text-cyan-400">{project.title}</h3>
                 <p class="text-center text-gray-300 mb-4">{project.description}</p>
@@ -75,6 +116,49 @@
             {/each}
         </div>
     </div>
+
+    <!-- Modal -->
+    {#if showModal}
+        <!-- Close button - without background -->
+        <button 
+            class="fixed top-4 right-4 text-white hover:text-cyan-400 transition-colors duration-300 z-[60]"
+            on:click={closeModal}
+            aria-label="Close modal"
+        >
+            <i class="fas fa-times text-xl"></i>
+        </button>
+
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <div 
+            class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50" 
+            on:click={closeModal}
+            role="dialog"
+            aria-modal="true"
+        >
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
+            <div 
+                class="relative max-w-[90vw] max-h-[90vh]" 
+                on:click|stopPropagation={() => {}}
+            >
+                {#if modalType === 'image'}
+                    <img 
+                        src={modalContent} 
+                        alt="Full size view" 
+                        class="max-w-full max-h-[90vh] object-contain"
+                    />
+                {:else if modalType === 'video'}
+                    <video 
+                        controls 
+                        autoplay
+                        class="max-w-full max-h-[90vh]"
+                    >
+                        <source src={modalContent} type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                {/if}
+            </div>
+        </div>
+    {/if}
 
     <!-- Additional Note -->
     <div class="w-full max-w-3xl mt-10 mb-6 text-center">
