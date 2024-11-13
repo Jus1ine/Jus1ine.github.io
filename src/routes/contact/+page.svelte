@@ -1,5 +1,5 @@
 <script>
-  // Any necessary script logic can go here
+  import '@fortawesome/fontawesome-free/css/all.min.css';
 </script>
 
 <main class="relative flex flex-col items-center justify-start min-h-screen p-12 bg-gradient-to-br from-gray-900 to-gray-800">
@@ -18,22 +18,24 @@
   </header>
 
   <!-- Centered: Text Content and Icons -->
-  <div class="flex flex-col items-center text-center mb-10 mt-24 pt-20">
-    <h1 class="text-5xl font-extrabold mb-4 text-cyan-300">Contact Me</h1>
-    <p class="text-lg md:text-xl max-w-2xl mb-6 leading-relaxed text-gray-300">
+  <div class="flex flex-col items-center text-center mb-10 mt-24 pt-20 px-4">
+    <h1 class="text-4xl md:text-5xl font-extrabold mb-6 text-cyan-300">Contact Me</h1>
+    <p class="text-lg md:text-xl max-w-2xl mb-12 leading-relaxed text-gray-300">
       I'm always open to discussing new projects or opportunities. Feel free to reach out via any of the platforms below!
     </p>
-    <div class="flex space-x-16">
+    
+    <!-- Social Links - Vertical on mobile -->
+    <div class="flex flex-col md:flex-row md:space-x-16 space-y-8 md:space-y-0">
       <!-- GitHub -->
       <a 
         href="https://github.com/Jus1ine" 
         target="_blank" 
-        class="icon-link text-gray-400 transition-colors duration-200"
+        class="icon-link"
         aria-label="Visit my GitHub profile"
       >
-        <i class="fab fa-github fa-3x mb-2"></i>
+        <i class="fab fa-github text-5xl text-gray-400 hover:text-cyan-400 transition-colors duration-200"></i>
         <span class="icon-image">
-          <img src="/github.png" alt="GitHub logo linking to my GitHub profile" class="hover-image" />
+          <img src="/github.png" alt="GitHub preview" class="hover-image" />
         </span>
       </a>
 
@@ -41,12 +43,12 @@
       <a 
         href="https://www.facebook.com/kevin.go.1614" 
         target="_blank" 
-        class="icon-link text-gray-400 transition-colors duration-200"
+        class="icon-link"
         aria-label="Visit my Facebook profile"
       >
-        <i class="fab fa-facebook fa-3x mb-2"></i>
+        <i class="fab fa-facebook text-5xl text-gray-400 hover:text-cyan-400 transition-colors duration-200"></i>
         <span class="icon-image">
-          <img src="/facebook.png" alt="Facebook logo linking to my Facebook profile" class="hover-image" />
+          <img src="/facebook.png" alt="Facebook preview" class="hover-image" />
         </span>
       </a>
 
@@ -54,24 +56,24 @@
       <a 
         href="https://discord.com/channels/@me" 
         target="_blank" 
-        class="icon-link text-gray-400 transition-colors duration-200"
+        class="icon-link"
         aria-label="Visit my Discord profile"
       >
-        <i class="fab fa-discord fa-3x mb-2"></i>
+        <i class="fab fa-discord text-5xl text-gray-400 hover:text-cyan-400 transition-colors duration-200"></i>
         <span class="icon-image">
-          <img src="/discord.png" alt="Discord logo linking to my Discord profile" class="hover-image" />
+          <img src="/discord.png" alt="Discord preview" class="hover-image" />
         </span>
       </a>
 
       <!-- Email -->
       <a 
-        href="mailto:202211378@gordoncollege.edu.ph?subject=Inquiry&body=Hi, I would like to discuss..." 
-        class="icon-link text-gray-400 transition-colors duration-200"
+        href="mailto:202211378@gordoncollege.edu.ph" 
+        class="icon-link"
         aria-label="Send me an email"
       >
-        <i class="fas fa-envelope fa-3x mb-2"></i>
+        <i class="fas fa-envelope text-5xl text-gray-400 hover:text-cyan-400 transition-colors duration-200"></i>
         <span class="icon-image">
-          <img src="/gmail.png" alt="Email logo linking to my email" class="hover-image" />
+          <img src="/gmail.png" alt="Email preview" class="hover-image" />
         </span>
       </a>
     </div>
@@ -98,49 +100,63 @@
 
   .icon-link {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 10px;
+    display: inline-block;
+    text-decoration: none;
+    transition: transform 0.2s ease;
   }
 
   .icon-link:hover {
-    color: #00bcd4; /* Change color on hover */
+    transform: scale(1.1);
   }
 
   .icon-image {
-    pointer-events: none;
+    display: none;
     position: absolute;
-    top: 60px; /* Adjust the position of the hover image */
+    bottom: 100%;
     left: 50%;
-    transform: translateX(-50%) scale(0); /* Initially hidden with scale 0 */
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transform: translateX(-50%);
+    margin-bottom: 20px;
+    z-index: 100;
   }
 
   .icon-link:hover .icon-image {
-    opacity: 1;
-    transform: translateX(-50%) scale(1); /* Appear on hover with scale */
+    display: block;
   }
 
   .hover-image {
-    max-width: 300px; /* Adjust the size of the hover image */
-    max-height: 210px;
-    width: auto;
+    max-width: 160px;
     height: auto;
-    border-radius: 0.5rem;
-    border: 4px solid #22d3ee; /* Border color */
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    border: 2px solid #22d3ee;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   }
 
-  /* Responsive styles */
+  /* Specific adjustments for Facebook and Gmail */
+  a[href*="facebook"] .hover-image,
+  a[href*="mailto"] .hover-image {
+    max-width: 180px; /* Increased size for Facebook and Gmail */
+  }
+
+  /* Responsive adjustments */
   @media (max-width: 768px) {
-    h1 {
-      font-size: 3rem; /* Adjust font size for smaller screens */
+    .hover-image {
+      max-width: 130px;
     }
-    p {
-      font-size: 1.2rem; /* Adjust font size for smaller screens */
+    
+    /* Mobile adjustments for Facebook and Gmail */
+    a[href*="facebook"] .hover-image,
+    a[href*="mailto"] .hover-image {
+      max-width: 150px;
+    }
+  }
+
+  /* Add these media queries for consistent icon size */
+  @media (max-width: 768px) {
+    .text-3xl {
+      font-size: 1.5rem !important;  /* Force the same size on mobile */
+    }
+    nav {
+      font-size: 0.875rem;
     }
   }
 </style>

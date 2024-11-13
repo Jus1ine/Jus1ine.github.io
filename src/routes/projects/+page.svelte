@@ -41,17 +41,17 @@
 <main class="flex flex-col items-center justify-center min-h-screen p-12 bg-gradient-to-br from-gray-900 to-gray-800">
     <!-- Header Section -->
     <header class="w-full flex justify-between items-center p-6 bg-gray-900 shadow-lg fixed top-0 left-0 z-10">
-        <h1 class="text-3xl font-extrabold text-white hover:text-cyan-400 transition duration-300 transform hover:scale-110">
-            <a href="/home" class="flex items-center">
-                <i class="fas fa-home mr-2"></i>
-            </a>
+        <h1 class="text-3xl font-extrabold text-white hover:text-cyan-400 transition duration-300">
+          <a href="/home" aria-label="Home" class="flex items-center">
+            <i class="fas fa-home mr-2"></i>
+          </a>
         </h1>
-        <nav class="space-x-6">
-            <a href="/about" class="text-white text-lg hover:text-cyan-400 hover:underline transition duration-300">About</a>
-            <a href="/projects" class="text-white text-lg hover:text-cyan-400 hover:underline transition duration-300">Projects</a>
-            <a href="/contact" class="text-white text-lg hover:text-cyan-400 hover:underline transition duration-300">Contact</a>
+        <nav class="space-x-6" aria-label="Main Navigation">
+          <a href="/about" aria-label="About Me" class="text-white hover:text-cyan-400 transition duration-300">About</a>
+          <a href="/projects" aria-label="Projects" class="text-white hover:text-cyan-400 transition duration-300">Projects</a>
+          <a href="/contact" aria-label="Contact" class="text-white hover:text-cyan-400 transition duration-300">Contact</a>
         </nav>
-    </header>
+      </header>
 
     <!-- Projects Section -->
     <div class="w-full max-w-7xl mt-20 pt-10">
@@ -92,6 +92,16 @@
 
     body {
         font-family: 'Roboto', sans-serif;
+    }
+
+    /* Add these media queries for consistent icon size */
+    @media (max-width: 768px) {
+        .text-3xl {
+            font-size: 1.5rem !important;  /* Force the same size on mobile */
+        }
+        nav {
+            font-size: 0.875rem;
+        }
     }
 
     /* Enhanced responsiveness */

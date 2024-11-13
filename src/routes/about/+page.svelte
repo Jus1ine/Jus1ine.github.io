@@ -38,40 +38,40 @@
 
 <main class="relative flex flex-col items-center justify-center min-h-screen p-12 bg-gradient-to-br from-gray-900 to-gray-800">
     <!-- Header Section -->
-    <header class="w-full flex justify-between items-center p-6 bg-gray-900 shadow-lg fixed top-0 left-0 z-20">
+    <header class="w-full flex justify-between items-center p-6 bg-gray-900 shadow-lg fixed top-0 left-0 z-50">
         <h1 class="text-3xl font-extrabold text-white hover:text-cyan-400 transition duration-300">
-            <a href="/home" class="flex items-center">
-                <i class="fas fa-home mr-2"></i>
-            </a>
+          <a href="/home" aria-label="Home" class="flex items-center">
+            <i class="fas fa-home mr-2"></i>
+          </a>
         </h1>
-        <nav class="space-x-6">
-            <a href="/about" class="text-white text-lg hover:text-cyan-400 transition duration-300">About</a>
-            <a href="/projects" class="text-white text-lg hover:text-cyan-400 transition duration-300">Projects</a>
-            <a href="/contact" class="text-white text-lg hover:text-cyan-400 transition duration-300">Contact</a>
+        <nav class="space-x-6" aria-label="Main Navigation">
+          <a href="/about" aria-label="About Me" class="text-white hover:text-cyan-400 transition duration-300">About</a>
+          <a href="/projects" aria-label="Projects" class="text-white hover:text-cyan-400 transition duration-300">Projects</a>
+          <a href="/contact" aria-label="Contact" class="text-white hover:text-cyan-400 transition duration-300">Contact</a>
         </nav>
-    </header>
+      </header>
 
     <!-- About Me Section with Reversed Layout -->
-    <div class="flex flex-col md:flex-row-reverse items-center w-full max-w-7xl mb-16 mt-24 pt-20 relative z-10">
+    <div class="flex flex-col md:flex-row-reverse items-center w-full max-w-7xl mb-8 md:mb-16 mt-16 md:mt-24 pt-10 md:pt-20 relative z-10 px-4 md:px-6">
         <!-- About Me content -->
-        <div class="flex flex-col items-start text-white mb-10 md:mb-0 md:w-1/2">
-            <h2 class="text-[10rem] font-extrabold leading-tight mb-4 drop-shadow-lg">
+        <div class="flex flex-col items-start text-white mb-6 md:mb-0 md:w-1/2">
+            <h2 class="text-6xl md:text-7xl lg:text-[10rem] font-extrabold leading-tight mb-4 drop-shadow-lg">
                 <span class="text-cyan-400">{aboutText}</span><br>
                 <span class="text-white">{meText}</span>
             </h2>
         </div>
         <!-- Image on the left -->
-        <img src="/HI.jpg" alt="Justine's portrait" class="w-full h-auto md:w-[500px] lg:w-[600px] lg:mr-20 rounded-lg transition-transform duration-300 transform hover:scale-105 z-10">
+        <img src="/HI.jpg" alt="Justine's portrait" class="w-full max-w-[350px] md:w-[400px] lg:w-[600px] h-auto lg:mr-20 rounded-lg transition-transform duration-300 transform hover:scale-105 z-10">
     </div>
 
     <!-- Introduction and Skills Section -->
-    <div class="flex flex-col items-start w-full max-w-7xl text-white z-10">
-        <p class="text-xl md:text-2xl mb-10 leading-relaxed text-gray-300 drop-shadow-md">{introText}</p>
+    <div class="flex flex-col items-start w-full max-w-7xl text-white z-10 px-4 md:px-6">
+        <p class="text-lg md:text-xl lg:text-2xl mb-8 leading-relaxed text-gray-300 drop-shadow-md">{introText}</p>
         
         <!-- Skills Section Title -->
-        <h2 class="text-3xl md:text-4xl font-semibold text-white mb-6 text-center">Skills</h2>
+        <h2 class="text-2xl md:text-3xl lg:text-4xl font-semibold text-white mb-6 text-center w-full">Skills</h2>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 w-full text-center z-10">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 w-full text-center z-0">
             {#each [
                 {
                     title: 'Front-End Developer',
@@ -151,13 +151,28 @@
     /* Enhanced responsiveness */
     @media (max-width: 768px) {
         h1 {
-            font-size: 5rem;
+            font-size: 2rem;
         }
         p {
-            font-size: 1.5rem;
+            font-size: 1.125rem;
         }
-        img {
-            width: 100%;
+        .card {
+            padding: 1rem;
+        }
+        .text-3xl {
+            font-size: 1.5rem !important;  /* Force the same size on mobile */
+        }
+        nav {
+            font-size: 0.875rem;
+        }
+    }
+
+    @media (max-width: 640px) {
+        nav {
+            font-size: 0.875rem;
+        }
+        .card i {
+            font-size: 1.5rem;
         }
     }
 </style>
